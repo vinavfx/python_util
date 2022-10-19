@@ -1,2 +1,4 @@
 *.pyc
 *.swp
+session.vim
+.undodir/
