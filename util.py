@@ -6,6 +6,14 @@ import json
 import os
 import random
 import string
+import subprocess
+
+
+def sh(cmd):
+    p = subprocess.Popen(
+        cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    out, err = p.communicate()
+    return out.decode(), err
 
 
 def fwrite(file, date):
