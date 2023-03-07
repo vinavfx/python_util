@@ -14,7 +14,18 @@ def sh(cmd):
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
     p.terminate()
-    return out.decode(), err
+
+    try:
+        out = out.decode()
+    except:
+        out = ''
+
+    try:
+        err = err.decode()
+    except:
+        err = ''
+
+    return out, err
 
 
 def fwrite(file, date):
