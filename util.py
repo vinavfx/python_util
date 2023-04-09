@@ -13,7 +13,6 @@ def sh(cmd):
     p = subprocess.Popen(
         cmd, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     out, err = p.communicate()
-    p.terminate()
 
     try:
         out = out.decode()
