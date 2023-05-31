@@ -7,6 +7,7 @@ import os
 import random
 import string
 import subprocess
+import shutil
 
 
 def sh(cmd):
@@ -69,3 +70,28 @@ def makedirs(_dir):
 def makedir(_dir):
     if not os.path.isdir(_dir):
         os.mkdir(_dir)
+
+
+def recursive_rename(directory, src_name, dst_name):
+    for root, dirs, files in os.walk(directory):
+        for f in files:
+            if not src_name in f:
+                continue
+
+            name = f.replace(src_name, dst_name)
+
+            src = os.path.join(root, f)
+            dst = os.path.join(root, name)
+
+            shutil.move(src, dst)
+
+        for d in dirs:
+            if not src_name in d:
+                continue
+
+            name = d.replace(src_name, dst_name)
+
+            src = os.path.join(root, d)
+            dst = os.path.join(root, name)
+
+            shutil.move(src, dst)
