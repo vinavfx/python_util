@@ -73,7 +73,7 @@ def makedir(_dir):
 
 
 def recursive_rename(directory, src_name, dst_name):
-    for root, dirs, files in os.walk(directory):
+    for root, dirs, files in os.walk(directory, topdown=False):
         for f in files:
             if not src_name in f:
                 continue
