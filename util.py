@@ -8,6 +8,7 @@ import random
 import string
 import subprocess
 import shutil
+from collections import OrderedDict
 
 
 def sh(cmd):
@@ -41,8 +42,9 @@ def fread(file):
 
     return readed
 
+
 def jread(file):
-    return json.loads(fread(file))
+    return json.loads(fread(file), object_pairs_hook=OrderedDict)
 
 
 def jwrite(file, data):
