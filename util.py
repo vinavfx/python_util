@@ -1,13 +1,13 @@
-#  Author: Francisco Jose Contreras Cuevas
-#  Office: Senior VFX Compositor & 3D FX Artist
-#  Website: videovina.com
-
+# Author: Francisco Jose Contreras Cuevas
+# Office: VFX Artist - Senior Compositor
+# Website: vinavfx.com
 import json
 import os
 import random
 import string
 import subprocess
 import shutil
+import base64
 
 
 def sh(cmd):
@@ -41,8 +41,17 @@ def fread(file):
 
     return readed
 
+
 def jread(file):
     return json.loads(fread(file))
+
+
+def encode(data):
+    return base64.b64encode(json.dumps(data).encode()).decode()
+
+
+def decode(data):
+    return json.loads(base64.b64decode(data.encode()).decode())
 
 
 def jwrite(file, data):
