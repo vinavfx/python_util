@@ -47,6 +47,11 @@ def jread(file):
     return json.loads(fread(file), object_pairs_hook=OrderedDict)
 
 
+def jprint(data):
+    formatted = json.dumps(data, indent=4)
+    print(formatted)
+
+
 def encode(data):
     return base64.b64encode(json.dumps(data).encode()).decode()
 
