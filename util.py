@@ -110,3 +110,16 @@ def recursive_rename(directory, src_name, dst_name):
             dst = os.path.join(root, name)
 
             shutil.move(src, dst)
+
+
+def ln_tree(src, dst):
+    os.makedirs(dst)
+
+    for name in os.listdir(src):
+        srcname = os.path.join(src, name)
+        dstname = os.path.join(dst, name)
+
+        if os.path.isdir(srcname):
+            ln_tree(srcname, dstname)
+        else:
+            os.link(srcname, dstname)
