@@ -112,6 +112,16 @@ def recursive_rename(directory, src_name, dst_name):
             shutil.move(src, dst)
 
 
+def get_folder_size(folder_path):
+    total_size = 0
+    for dirpath, _, filenames in os.walk(folder_path):
+        for filename in filenames:
+            filepath = os.path.join(dirpath, filename)
+            total_size += os.path.getsize(filepath)
+
+    return round(float(total_size) / float(1024 ** 3), 1)  # GB
+
+
 def ln_tree(src, dst):
     os.makedirs(dst)
 
